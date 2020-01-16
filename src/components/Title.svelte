@@ -18,6 +18,13 @@
     display: flex;
     margin: auto;
   }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 40px;
+      line-height: 50px;
+    }
+  }
 </style>
 
 <div class="main-heading item">

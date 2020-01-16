@@ -47,3 +47,15 @@ a:visited {
 .ylw {
   color: var(--ylw);
 }
+
+@media (max-width: 600px) {
+  .item.item:nth-child(even) {
+    margin-left: 5%;
+  }
+  .item {
+    width: 90%;
+    margin-left: 5%;
+    min-height: 80vh;
+    margin-bottom: 10vh;
+  }
+}

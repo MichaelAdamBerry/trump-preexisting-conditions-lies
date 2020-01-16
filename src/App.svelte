@@ -9,7 +9,9 @@
   const data = timelineData();
 
   //sets top and bottom borders on for scroll debugging
-  let debug = true;
+
+  let h;
+  let debug = false;
 
   // sets vertical height of each timeline item
   let articleHeight = 500;
@@ -108,6 +110,23 @@
     max-width: 700px;
     margin: auto;
   }
+  .line-container {
+    position: relative;
+  }
+
+  .line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    border-left: 1px solid var(--gry-1);
+  }
+
+  @media (max-width: 600px) {
+    .line-container {
+      display: none;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -119,27 +138,13 @@
 
   <main bind:this={sectionRef} style={bg}>
     <Title />
-    <section class="content">
+    <section bind:clientHeight={h} class="content">
+      <div class="line-container">
+        <div class="line" style={`height: ${h}px`} />
+      </div>
       <div class="article-container">
         {#each data as d, i}
-          <TimelineItem {debug} {d} {i} {articleHeight} {indexInView} />
-          <!-- <article
-            class={`item ${(debug = true ? 'debug' : '')}`}
-            id={`item-${i}`}
-            style={`min-height: ${articleHeight}px; max-height: ${articleHeight};`}>
-            <div
-              class="item-change"
-              style={indexInView == i ? 'opacity: 1' : 'opacity: .4'}>
-              <img src={d.img} alt="" />
-              <h2
-                style={`transform: translate(0, ${indexInView == i ? '-40' : '0'}px)`}
-                class="ylw year">
-                {d.y}
-              </h2>
-              <p>{d.t}</p>
-            </div> 
-
-          </article>-->
+          <TimelineItem {d} {i} {articleHeight} {indexInView} />
         {/each}
       </div>
     </section>
