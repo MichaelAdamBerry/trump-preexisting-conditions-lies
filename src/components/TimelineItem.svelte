@@ -1,4 +1,7 @@
 <script>
+  import { fade } from "svelte/transition";
+  import SideContent from "./SideContent.svelte";
+
   export let debug;
   export let articleHeight;
   export let indexInView;
@@ -32,16 +35,24 @@
     transition: all 0.3s ease-in 0.3s;
   }
 
-  h2 {
-    margin: 0;
-    font-size: 50px;
-    font-family: var(--lg-fnt);
-    margin: 0;
-    transition: all 0.3s ease-in 0.3s;
+  .date {
+    padding: 1rem 0;
+    color: var(--ylw);
+  }
+
+  .source-container {
+    position: relative;
+    padding: 1rem;
+    background-color: var(--gry-4);
+  }
+
+  .source {
+    position: relative;
+    display: none;
   }
 
   .item-change {
-    opacity: 0.4;
+    opacity: 0.2;
   }
 
   @media (max-width: 600px) {
@@ -66,21 +77,23 @@
     #item-7 h2 {
       margin-left: 50%;
     }
+
+    .source {
+      display: none;
+    }
   }
 </style>
 
+<SideContent {i} {indexInView} source={d.source} date={d.date} y={d.y} />
 <article
   class={`item ${(debug = true ? 'debug' : '')}`}
   id={`item-${i}`}
   style={`min-height: ${articleHeight}px; max-height: ${articleHeight};`}>
   <div class="item-change" style={indexInView == i && 'opacity: 1'}>
     <img src={d.img} alt="" />
-    <h2
-      style={`${indexInView != i ? 'color: var(--gry-1);' : ''} transform: translate(${indexInView == i && even ? '150%' : indexInView == i && !even ? '-100%' : '0'}, ${indexInView == i ? '-40' : '0'}px)`}
-      class="ylw year">
-      {d.y}
-    </h2>
-    <p style={`transform: translate(0, ${indexInView == i ? '-5' : '0'}rem)`}>
+    <div
+      style={`${indexInView != i ? 'color: var(--gry-1);' : ''} transform: translate(${indexInView == i && even ? '150%' : indexInView == i && !even ? '-150%' : '0'}, ${indexInView == i ? '-40' : '0'}px)`} />
+    <p style={`transform: translate(0, ${indexInView == i ? '1' : '-1'}rem)`}>
       {d.t}
     </p>
   </div>

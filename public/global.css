@@ -27,7 +27,8 @@ a:visited {
   color: rgb(0, 80, 160);
 }
 
-.item {
+.item,
+.sideContent {
   width: calc(50% - 40px);
   display: flex;
 

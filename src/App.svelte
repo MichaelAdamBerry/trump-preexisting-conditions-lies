@@ -144,7 +144,7 @@
       </div>
       <div class="article-container">
         {#each data as d, i}
-          <TimelineItem {d} {i} {articleHeight} {indexInView} />
+          <TimelineItem {d} {i} {articleHeight} {indexInView} {debug} />
         {/each}
       </div>
     </section>
