@@ -90,7 +90,7 @@
   id={`item-${i}`}
   style={`min-height: ${articleHeight}px; max-height: ${articleHeight};`}>
   <div class="item-change" style={indexInView == i && 'opacity: 1'}>
-    <img src={d.img} alt="" />
+    <img src={d.img} alt={d.alt} />
     <div
       style={`${indexInView != i ? 'color: var(--gry-1);' : ''} transform: translate(${indexInView == i && even ? '150%' : indexInView == i && !even ? '-150%' : '0'}, ${indexInView == i ? '-40' : '0'}px)`} />
     <p style={`transform: translate(0, ${indexInView == i ? '1' : '-1'}rem)`}>

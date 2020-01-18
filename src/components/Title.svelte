@@ -1,14 +1,5 @@
 <script>
-  import { onMount } from "svelte";
-  let replace = false;
-  onMount(() => {
-    let mislead = document.getElementById("initial");
-    let lie = document.getElementById("replacemet");
 
-    window.setTimeout(() => {
-      mislead.style = "animation: flyout 0.3s ease-in-out 0s forwards;";
-    }, 2000);
-  });
 </script>
 
 <style>
@@ -35,14 +26,6 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-  }
-
-  #replacement {
-    display: none;
-  }
-
-  .sendOut {
-    animation: flyout 0.3s ease-in-out 3s forwards;
   }
 
   @keyframes flyout {
